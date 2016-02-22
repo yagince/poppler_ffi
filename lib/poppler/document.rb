@@ -4,6 +4,7 @@ require 'open3'
 
 require 'poppler/page_layout'
 require 'poppler/page_mode'
+require 'poppler/permissions'
 require 'poppler/page'
 
 module Poppler
@@ -24,6 +25,7 @@ module Poppler
     attach_function :poppler_document_get_n_pages, [:pointer], :int
     attach_function :poppler_document_get_page, [:pointer, :int], :pointer
     attach_function :poppler_document_get_page_mode, [:pointer], :int
+    attach_function :poppler_document_get_permissions, [:pointer], :int
   end
 
   class Document < FFI::Struct
@@ -89,6 +91,10 @@ module Poppler
 
     def page_mode
       Poppler::PageMode.new(DocumentBinding.poppler_document_get_page_mode(self.to_ptr))
+    end
+
+    def permissions
+      Poppler::Permissions.new(DocumentBinding.poppler_document_get_permissions(self.to_ptr))
     end
 
     private

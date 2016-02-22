@@ -71,4 +71,9 @@ RSpec.describe Poppler::Document do
     subject { doc.page_mode }
     it { is_expected.to be_a Poppler::PageMode }
   end
+
+  describe "#permissions" do
+    subject { doc.permissions }
+    it { is_expected.to be_a Poppler::Permissions }
+  end
 end
