@@ -61,4 +61,9 @@ RSpec.describe Poppler::Document do
     subject { doc.page_count }
     it { is_expected.to eq 1 }
   end
+
+  describe "#pages" do
+    subject { doc.pages }
+    it { is_expected.to all(a_kind_of(Poppler::Page)) }
+  end
 end

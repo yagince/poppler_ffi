@@ -3,6 +3,7 @@ require "glib2"
 require 'open3'
 
 require 'poppler/page_layout'
+require 'poppler/page'
 
 module Poppler
   module DocumentBinding
@@ -20,6 +21,7 @@ module Poppler
     attach_function :poppler_document_get_modification_date, [:pointer], :int
     attach_function :poppler_document_get_page_layout, [:pointer], :int
     attach_function :poppler_document_get_n_pages, [:pointer], :int
+    attach_function :poppler_document_get_page, [:pointer, :int], :pointer
   end
 
   class Document < FFI::Struct
@@ -75,6 +77,12 @@ module Poppler
 
     def page_count
       DocumentBinding.poppler_document_get_n_pages(self.to_ptr)
+    end
+
+    def pages
+      (1..(page_count)).map{|i|
+        Poppler::Page.new(DocumentBinding.poppler_document_get_page(self.to_ptr, i-1))
+      }
     end
 
     private
