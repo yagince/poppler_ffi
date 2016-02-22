@@ -66,4 +66,9 @@ RSpec.describe Poppler::Document do
     subject { doc.pages }
     it { is_expected.to all(a_kind_of(Poppler::Page)) }
   end
+
+  describe "#page_mode" do
+    subject { doc.page_mode }
+    it { is_expected.to be_a Poppler::PageMode }
+  end
 end
