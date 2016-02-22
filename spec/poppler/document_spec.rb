@@ -56,4 +56,9 @@ RSpec.describe Poppler::Document do
     subject { doc.page_layout }
     it { is_expected.to be_a Poppler::PageLayout }
   end
+
+  describe "#page_count" do
+    subject { doc.page_count }
+    it { is_expected.to eq 1 }
+  end
 end

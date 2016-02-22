@@ -19,6 +19,7 @@ module Poppler
     attach_function :poppler_document_get_creation_date, [:pointer], :int
     attach_function :poppler_document_get_modification_date, [:pointer], :int
     attach_function :poppler_document_get_page_layout, [:pointer], :int
+    attach_function :poppler_document_get_n_pages, [:pointer], :int
   end
 
   class Document < FFI::Struct
@@ -70,6 +71,10 @@ module Poppler
 
     def page_layout
       PageLayout.new(DocumentBinding.poppler_document_get_page_layout(self.to_ptr))
+    end
+
+    def page_count
+      DocumentBinding.poppler_document_get_n_pages(self.to_ptr)
     end
 
     private
