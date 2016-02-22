@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "poppler-ruby"
   spec.version       = Poppler::VERSION
   spec.authors       = ["yagince"]
-  spec.email         = ["natsuki.yagi@viibar.com"]
+  spec.email         = ["straitwalk@gmail.com"]
 
   spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
   spec.description   = %q{TODO: Write a longer description or delete this line.}
@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "glib2", "~> 3.0.7"
   spec.add_dependency "ffi", "~> 1.9.10"
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"

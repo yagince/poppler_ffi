@@ -1,5 +1,7 @@
 require "poppler/version"
+require "ffi"
+require "g_error"
+require "poppler/document"
 
 module Poppler
-  # Your code goes here...
 end
