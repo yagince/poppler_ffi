@@ -31,4 +31,29 @@ RSpec.describe Poppler::Document do
     subject { doc.author }
     it { is_expected.to be_nil }
   end
+
+  describe "#subject" do
+    subject { doc.subject }
+    it { is_expected.to be_nil }
+  end
+
+  describe "#keywords" do
+    subject { doc.keywords }
+    it { is_expected.to be_empty }
+  end
+
+  describe "#created_date" do
+    subject { doc.created_date }
+    it { is_expected.to eq Time.local(2016,2,22,4,25,37) }
+  end
+
+  describe "#updated_date" do
+    subject { doc.created_date }
+    it { is_expected.to eq Time.local(2016,2,22,4,25,37) }
+  end
+
+  describe "#page_layout" do
+    subject { doc.page_layout }
+    it { is_expected.to be_a Poppler::PageLayout }
+  end
 end
