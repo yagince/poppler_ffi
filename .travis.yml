@@ -8,8 +8,8 @@ os:
 addons:
   apt:
     packages:
+      - libpoppler-glib-dev
       - poppler-utils
-      - poppler-data
 
 before_install:
   - gem install bundler -v 1.11.2
