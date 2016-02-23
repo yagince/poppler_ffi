@@ -12,8 +12,12 @@ notifications:
   email: false
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo wget https://launchpad.net/ubuntu/+archive/primary/+files/libpoppler-dev_0.38.0-0ubuntu1_amd64.deb && sudo dpkg -i libpoppler-dev_0.38.0-0ubuntu1_amd64.deb  ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo wget https://launchpad.net/ubuntu/+archive/primary/+files/libpoppler-glib-dev_0.38.0-0ubuntu1_amd64.deb && sudo dpkg -i libpoppler-glib-dev_0.38.0-0ubuntu1_amd64.deb  ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo add-apt-repository -y 'deb http://archive.ubuntu.com/ubuntu trusty main'  ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo add-apt-repository -y 'deb http://archive.ubuntu.com/ubuntu trusty-security main'  ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0x3B4FE6ACC0B21F32  ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -qq  ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y libpoppler-glib-dev  ; fi
+
   - if [[ "$TRAVIS_OS_NAME" == "osx"   ]]; then brew update         ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx"   ]]; then brew install poppler; fi
   - gem install bundler -v 1.11.2
