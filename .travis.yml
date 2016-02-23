@@ -12,8 +12,9 @@ notifications:
   email: false
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo add-apt-repository -y 'deb http://archive.ubuntu.com/ubuntu wily main'  ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -qq  ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo add-apt-repository ppa:ubuntu-mate-dev/xenial-mate  ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update   ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get upgrade  ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y libpoppler-glib-dev  ; fi
 
   - if [[ "$TRAVIS_OS_NAME" == "osx"   ]]; then brew update         ; fi
