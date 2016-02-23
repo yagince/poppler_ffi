@@ -8,6 +8,9 @@ os:
   - linux
   #- osx
 
+notifications:
+  email: false
+
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo wget https://launchpad.net/ubuntu/+archive/primary/+files/libpoppler-glib-dev_0.38.0-0ubuntu1_amd64.deb ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo dpkg -i libpoppler-glib-dev_0.38.0-0ubuntu1_amd64.deb ; fi
