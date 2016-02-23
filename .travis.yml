@@ -12,6 +12,7 @@ addons:
       - poppler-utils
 
 before_install:
+  - rvm get latest
   - gem install bundler -v 1.11.2
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update         ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install poppler; fi
