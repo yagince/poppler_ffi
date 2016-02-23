@@ -3,7 +3,7 @@ rvm:
   - 2.3.0
 os:
   - linux
-  - osx
+  #- osx
 
 addons:
   apt:
