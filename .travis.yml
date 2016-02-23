@@ -9,8 +9,7 @@ os:
   #- osx
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update                     ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y libpoppler-glib-dev ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo dpkg -i https://launchpad.net/ubuntu/+archive/primary/+files/libpoppler-glib-dev_0.38.0-0ubuntu1_amd64.deb ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx"   ]]; then brew update         ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx"   ]]; then brew install poppler; fi
   - gem install bundler -v 1.11.2
