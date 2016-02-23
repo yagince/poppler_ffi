@@ -7,8 +7,9 @@ os:
 
 addons:
   apt:
-    - poppler-utils
-    - poppler-data
+    packages:
+      - poppler-utils
+      - poppler-data
 
 before_install:
   - gem install bundler -v 1.11.2
