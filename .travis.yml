@@ -9,7 +9,6 @@ addons:
   apt:
     packages:
       - libpoppler-glib-dev
-      - poppler-utils
 
 before_install:
   - rvm get latest
