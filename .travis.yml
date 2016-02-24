@@ -12,7 +12,7 @@ notifications:
   email: false
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ${TRAVIS_BUILD_DIR}/build_poppler.sh  ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then $(${TRAVIS_BUILD_DIR}/build_poppler.sh)  ; fi
 
   - if [[ "$TRAVIS_OS_NAME" == "osx"   ]]; then brew update         ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx"   ]]; then brew install poppler; fi
