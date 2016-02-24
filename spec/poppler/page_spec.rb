@@ -19,4 +19,17 @@ RSpec.describe Poppler::Page do
     subject { page.page_size }
     it { is_expected.to eq({ width: 595.0, height: 842.0 }) }
   end
+
+  describe "#crop_box" do
+    subject { page.crop_box }
+
+    it { is_expected.to be_a Poppler::Rectangle }
+
+    it 'properties' do
+      expect(subject.x1).to eq 0.0
+      expect(subject.y1).to eq 0.0
+      expect(subject.x2).to eq 595.0
+      expect(subject.y2).to eq 842.0
+    end
+  end
 end

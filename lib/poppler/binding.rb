@@ -23,5 +23,6 @@ module Poppler
     attach_function :poppler_page_get_index, [:pointer], :int
     attach_function :poppler_page_get_label, [:pointer], :string
     attach_function :poppler_page_get_size, [:pointer, :pointer, :pointer], :void
+    attach_function :poppler_page_get_crop_box, [:pointer, :pointer], :void
   end
 end
