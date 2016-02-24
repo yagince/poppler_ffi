@@ -39,8 +39,25 @@ RSpec.describe Poppler::Page do
   end
 
   describe "#text" do
-    subject { page.text }
-    it { is_expected.to eq "Test\n1\nA\n2\nB\n3\nC" }
+    context "without rectangle" do
+      subject { page.text }
+      it { is_expected.to eq "Test\n1\nA\n2\nB\n3\nC" }
+    end
+
+    context "with rectangle" do
+      let(:area) {
+        Poppler::Rectangle.new.tap{|r|
+          r[:x1] = 100
+          r[:y1] = 300
+          r[:x2] = 500
+          r[:y2] = 600
+        }
+      }
+
+      subject { page.text(area) }
+
+      it { is_expected.to eq "B\n3\nC" }
+    end
   end
 
 end

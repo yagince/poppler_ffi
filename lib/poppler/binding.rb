@@ -26,5 +26,6 @@ module Poppler
     attach_function :poppler_page_get_crop_box, [:pointer, :pointer], :void
     attach_function :poppler_page_get_duration, [:pointer], :double
     attach_function :poppler_page_get_text, [:pointer], :string
+    attach_function :poppler_page_get_text_for_area, [:pointer, :pointer], :string
   end
 end

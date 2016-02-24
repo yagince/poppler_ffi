@@ -31,8 +31,12 @@ module Poppler
       Binding.poppler_page_get_duration(self.to_ptr)
     end
 
-    def text
-      Binding.poppler_page_get_text(self.to_ptr)
+    def text(area_rectangle = nil)
+      if area_rectangle
+        Binding.poppler_page_get_text_for_area(self.to_ptr, area_rectangle)
+      else
+        Binding.poppler_page_get_text(self.to_ptr)
+      end
     end
   end
 end
