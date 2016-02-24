@@ -1,6 +1,7 @@
 require 'ffi'
 require 'poppler/binding'
 require 'poppler/rectangle'
+require 'poppler/libc'
 
 module Poppler
   class Page < FFI::Struct
@@ -35,8 +36,26 @@ module Poppler
       if area_rectangle
         Binding.poppler_page_get_text_for_area(self.to_ptr, area_rectangle)
       else
-        Binding.poppler_page_get_text(self.to_ptr)
+        @text ||= Binding.poppler_page_get_text(self.to_ptr)
       end
+    end
+
+    def text_layout
+      array_ptr = FFI::MemoryPointer.new :pointer
+      count_ptr = FFI::MemoryPointer.new :int
+      unless Binding.poppler_page_get_text_layout(self.to_ptr, array_ptr, count_ptr)
+        return []
+      end
+
+      n = count_ptr.read_uint
+      array = array_ptr.read_pointer
+      p array.size
+      rectangles = n.times.map{|i| Rectangle.new(array[i].read_pointer) }
+      # rectangles = array.read_array_of_pointer(n).map{|ptr|
+      #   p ptr
+      #   Rectangle.new(ptr.read_pointer)
+      # }
+      rectangles
     end
   end
 end

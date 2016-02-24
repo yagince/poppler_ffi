@@ -27,5 +27,6 @@ module Poppler
     attach_function :poppler_page_get_duration, [:pointer], :double
     attach_function :poppler_page_get_text, [:pointer], :string
     attach_function :poppler_page_get_text_for_area, [:pointer, :pointer], :string
+    attach_function :poppler_page_get_text_layout, [:pointer, :pointer, :pointer], :bool
   end
 end

@@ -60,4 +60,15 @@ RSpec.describe Poppler::Page do
     end
   end
 
+  describe "text_layout" do
+    subject { page.text_layout }
+    it { expect(subject.size).to eq 16 }
+    it { is_expected.to all(a_kind_of Poppler::Rectangle) }
+    it {
+      subject.each{|r|
+        p r.x1, r.y1, r.x2, r.y2
+      }
+    }
+  end
+
 end
