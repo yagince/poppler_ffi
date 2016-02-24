@@ -26,5 +26,9 @@ module Poppler
       Binding.poppler_page_get_crop_box(self.to_ptr, crop_box)
       crop_box
     end
+
+    def duration
+      Binding.poppler_page_get_duration(self.to_ptr)
+    end
   end
 end

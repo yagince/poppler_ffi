@@ -32,4 +32,9 @@ RSpec.describe Poppler::Page do
       expect(subject.y2).to eq 842.0
     end
   end
+
+  describe "#duration" do
+    subject { page.duration }
+    it { is_expected.to eq -1.0 }
+  end
 end
