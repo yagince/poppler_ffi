@@ -12,5 +12,10 @@ module Poppler
         self[name]
       end
     end
+
+    def ==(other)
+      return false unless other.instance_of?(Rectangle)
+      other.x1 == x1 && other.y1 == y1 && other.x2 == x2 && other.y2 == y2
+    end
   end
 end

@@ -60,15 +60,36 @@ RSpec.describe Poppler::Page do
     end
   end
 
+  def rectangle(x1, y1, x2, y2)
+    Poppler::Rectangle.new.tap{|r|
+      r[:x1] = x1
+      r[:y1] = y1
+      r[:x2] = x2
+      r[:y2] = y2
+    }
+  end
+
   describe "text_layout" do
     subject { page.text_layout }
     it { expect(subject.size).to eq 16 }
     it { is_expected.to all(a_kind_of Poppler::Rectangle) }
     it {
-      subject.each{|r|
-        p r.x1, r.y1, r.x2, r.y2
-      }
+      is_expected.to eq [rectangle(53,      55.576,  58.8476, 70.228),
+                         rectangle(58.8476, 55.576,  64.8152, 70.228),
+                         rectangle(64.8152, 55.576,  69.5108, 70.228),
+                         rectangle(69.5108, 55.576,  73.5308, 70.228),
+                         rectangle(73.5308, 70.228,  73.5308, 70.228),
+                         rectangle(107,     87.576,  113.084, 102.228),
+                         rectangle(113.084, 102.228, 113.084, 102.228),
+                         rectangle(53,      103.576, 59.948,  118.228),
+                         rectangle(59.948,  118.228, 59.948,  118.228),
+                         rectangle(172,     87.576,  178.084, 102.228),
+                         rectangle(178.084, 102.228, 178.084, 102.228),
+                         rectangle(118,     103.576, 124.528, 118.228),
+                         rectangle(124.528, 118.228, 124.528, 118.228),
+                         rectangle(237,     87.576,  243.084, 102.228),
+                         rectangle(243.084, 102.228, 243.084, 102.228),
+                         rectangle(183,     103.576, 189.39600000000002, 118.228)]
     }
   end
-
 end

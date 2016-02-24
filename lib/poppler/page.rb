@@ -41,7 +41,7 @@ module Poppler
     end
 
     def text_layout
-      array_ptr = FFI::MemoryPointer.new :pointer
+      array_ptr = FFI::MemoryPointer.new Rectangle
       count_ptr = FFI::MemoryPointer.new :int
       unless Binding.poppler_page_get_text_layout(self.to_ptr, array_ptr, count_ptr)
         return []
@@ -49,13 +49,7 @@ module Poppler
 
       n = count_ptr.read_uint
       array = array_ptr.read_pointer
-      p array.size
-      rectangles = n.times.map{|i| Rectangle.new(array[i].read_pointer) }
-      # rectangles = array.read_array_of_pointer(n).map{|ptr|
-      #   p ptr
-      #   Rectangle.new(ptr.read_pointer)
-      # }
-      rectangles
+      n.times.map{|i| Rectangle.new(array[i * Rectangle.size]) }
     end
   end
 end
