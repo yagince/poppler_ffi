@@ -7,7 +7,7 @@ echo "[Unarchive]"
 tar xf poppler-0.41.0.tar.xz
 
 echo "[Make & Install]"
-cd poppler
+cd poppler-0.41.0
 ./configure
 make
 sudo make install
