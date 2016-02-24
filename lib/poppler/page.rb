@@ -30,5 +30,9 @@ module Poppler
     def duration
       Binding.poppler_page_get_duration(self.to_ptr)
     end
+
+    def text
+      Binding.poppler_page_get_text(self.to_ptr)
+    end
   end
 end

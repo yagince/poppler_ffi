@@ -37,4 +37,10 @@ RSpec.describe Poppler::Page do
     subject { page.duration }
     it { is_expected.to eq -1.0 }
   end
+
+  describe "#text" do
+    subject { page.text }
+    it { is_expected.to eq "Test\n1\nA\n2\nB\n3\nC" }
+  end
+
 end
