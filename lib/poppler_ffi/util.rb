@@ -1,4 +1,4 @@
-module Poppler
+module PopplerFFI
   class Util
     # TODO: support windows
     def self.find_library

@@ -1,4 +1,4 @@
-module Poppler
+module PopplerFFI
   class PageMode
     POPPLER_PAGE_MODE_UNSET           = 0
     POPPLER_PAGE_MODE_NONE            = 1

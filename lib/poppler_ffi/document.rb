@@ -2,13 +2,13 @@ require 'ffi'
 require "glib2"
 require 'open3'
 
-require 'poppler/binding'
-require 'poppler/page_layout'
-require 'poppler/page_mode'
-require 'poppler/permissions'
-require 'poppler/page'
+require 'poppler_ffi/binding'
+require 'poppler_ffi/page_layout'
+require 'poppler_ffi/page_mode'
+require 'poppler_ffi/permissions'
+require 'poppler_ffi/page'
 
-module Poppler
+module PopplerFFI
   class Document < FFI::Struct
     layout :author, :string,
            :creation_date, :int,
@@ -66,16 +66,16 @@ module Poppler
 
     def pages
       (1..(page_count)).map{|i|
-        Poppler::Page.new(Binding.poppler_document_get_page(self.to_ptr, i-1))
+        PopplerFFI::Page.new(Binding.poppler_document_get_page(self.to_ptr, i-1))
       }
     end
 
     def page_mode
-      Poppler::PageMode.new(Binding.poppler_document_get_page_mode(self.to_ptr))
+      PopplerFFI::PageMode.new(Binding.poppler_document_get_page_mode(self.to_ptr))
     end
 
     def permissions
-      Poppler::Permissions.new(Binding.poppler_document_get_permissions(self.to_ptr))
+      PopplerFFI::Permissions.new(Binding.poppler_document_get_permissions(self.to_ptr))
     end
 
     private

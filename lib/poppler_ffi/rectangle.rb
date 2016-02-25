@@ -1,6 +1,6 @@
 require 'ffi'
 
-module Poppler
+module PopplerFFI
   class Rectangle < FFI::Struct
     layout :x1, :double,
            :y1, :double,

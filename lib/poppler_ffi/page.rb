@@ -1,9 +1,9 @@
 require 'ffi'
-require 'poppler/binding'
-require 'poppler/rectangle'
-require 'poppler/libc'
+require 'poppler_ffi/binding'
+require 'poppler_ffi/rectangle'
+require 'poppler_ffi/libc'
 
-module Poppler
+module PopplerFFI
   class Page < FFI::Struct
     layout :label, :string
 

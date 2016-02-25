@@ -1,4 +1,4 @@
-module Poppler
+module PopplerFFI
   class PageLayout
     POPPLER_PAGE_LAYOUT_UNSET            = 0
     POPPLER_PAGE_LAYOUT_SINGLE_PAGE      = 1

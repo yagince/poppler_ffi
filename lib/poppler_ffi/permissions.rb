@@ -1,4 +1,4 @@
-module Poppler
+module PopplerFFI
   class Permissions
     POPPLER_PERMISSIONS_OK_TO_PRINT = 1 << 0
     POPPLER_PERMISSIONS_OK_TO_MODIFY = 1 << 1

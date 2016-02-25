@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-RSpec.describe Poppler::Document do
+RSpec.describe PopplerFFI::Document do
   let(:file_path) { "spec/fixture/sample.pdf" }
-  let(:doc) { Poppler::Document.new(file_path) }
+  let(:doc) { PopplerFFI::Document.new(file_path) }
 
   describe "new" do
-    subject { Poppler::Document.new(file_path) }
+    subject { PopplerFFI::Document.new(file_path) }
     it { expect { subject }.not_to raise_error }
   end
 
@@ -55,7 +55,7 @@ RSpec.describe Poppler::Document do
 
   describe "#page_layout" do
     subject { doc.page_layout }
-    it { is_expected.to be_a Poppler::PageLayout }
+    it { is_expected.to be_a PopplerFFI::PageLayout }
   end
 
   describe "#page_count" do
@@ -65,16 +65,16 @@ RSpec.describe Poppler::Document do
 
   describe "#pages" do
     subject { doc.pages }
-    it { is_expected.to all(a_kind_of(Poppler::Page)) }
+    it { is_expected.to all(a_kind_of(PopplerFFI::Page)) }
   end
 
   describe "#page_mode" do
     subject { doc.page_mode }
-    it { is_expected.to be_a Poppler::PageMode }
+    it { is_expected.to be_a PopplerFFI::PageMode }
   end
 
   describe "#permissions" do
     subject { doc.permissions }
-    it { is_expected.to be_a Poppler::Permissions }
+    it { is_expected.to be_a PopplerFFI::Permissions }
   end
 end

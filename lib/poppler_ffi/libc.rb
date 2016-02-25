@@ -1,6 +1,6 @@
 require 'ffi'
 
-module Poppler
+module PopplerFFI
   module LibC
     extend FFI::Library
     ffi_lib FFI::Library::LIBC

@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Poppler do
+describe PopplerFFI do
 end

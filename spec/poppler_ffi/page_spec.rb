@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-RSpec.describe Poppler::Page do
+RSpec.describe PopplerFFI::Page do
   let(:file_path) { "spec/fixture/sample.pdf" }
-  let(:doc)       { Poppler::Document.new(file_path) }
+  let(:doc)       { PopplerFFI::Document.new(file_path) }
   let(:page)      { doc.pages.first }
 
   describe "#index" do
@@ -28,7 +28,7 @@ RSpec.describe Poppler::Page do
   describe "#crop_box" do
     subject { page.crop_box }
 
-    it { is_expected.to be_a Poppler::Rectangle }
+    it { is_expected.to be_a PopplerFFI::Rectangle }
 
     it 'properties' do
       expect(subject.x1).to eq 0.0
@@ -51,7 +51,7 @@ RSpec.describe Poppler::Page do
 
     context "with rectangle" do
       let(:area) {
-        Poppler::Rectangle.new.tap{|r|
+        PopplerFFI::Rectangle.new.tap{|r|
           r[:x1] = 100
           r[:y1] = 300
           r[:x2] = 500
@@ -66,7 +66,7 @@ RSpec.describe Poppler::Page do
   end
 
   def rectangle(x1, y1, x2, y2)
-    Poppler::Rectangle.new.tap{|r|
+    PopplerFFI::Rectangle.new.tap{|r|
       r[:x1] = x1
       r[:y1] = y1
       r[:x2] = x2
@@ -77,7 +77,7 @@ RSpec.describe Poppler::Page do
   describe "text_layout" do
     subject { page.text_layout }
     it { expect(subject.size).to eq 16 }
-    it { is_expected.to all(a_kind_of Poppler::Rectangle) }
+    it { is_expected.to all(a_kind_of PopplerFFI::Rectangle) }
     it {
       is_expected.to eq [rectangle(53,      55.576,  58.8476, 70.228),
                          rectangle(58.8476, 55.576,  64.8152, 70.228),

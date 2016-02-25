@@ -1,3 +1,3 @@
-module Poppler
+module PopplerFFI
   VERSION = "0.1.0"
 end

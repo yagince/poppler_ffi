@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'poppler/version'
+require 'poppler_ffi/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "poppler-ruby"
-  spec.version       = Poppler::VERSION
+  spec.name          = "poppler_ffi"
+  spec.version       = PopplerFFI::VERSION
   spec.authors       = ["yagince"]
   spec.email         = ["straitwalk@gmail.com"]
 

@@ -1,5 +1,5 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'poppler'
+require 'poppler_ffi'
 
 RSpec.configure do |config|
   config.define_derived_metadata do |meta|

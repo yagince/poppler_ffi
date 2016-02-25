@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-RSpec.describe Poppler::Rectangle do
+RSpec.describe PopplerFFI::Rectangle do
   let(:x1) { 100 }
   let(:y1) { 200 }
   let(:x2) { 300 }
   let(:y2) { 400 }
   let(:rectangle) {
-    Poppler::Rectangle.new.tap {|r|
+    PopplerFFI::Rectangle.new.tap {|r|
       r[:x1] = x1
       r[:y1] = y1
       r[:x2] = x2
@@ -23,7 +23,7 @@ RSpec.describe Poppler::Rectangle do
 
   describe "#==" do
     it {
-      expect(rectangle).to eq Poppler::Rectangle.new.tap{|r|
+      expect(rectangle).to eq PopplerFFI::Rectangle.new.tap{|r|
         r[:x1] = 100
         r[:y1] = 200
         r[:x2] = 300

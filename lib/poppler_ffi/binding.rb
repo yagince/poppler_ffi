@@ -1,8 +1,8 @@
-module Poppler
+module PopplerFFI
   module Binding
     extend FFI::Library
 
-    ffi_lib Poppler::Util.find_library
+    ffi_lib PopplerFFI::Util.find_library
 
     # Document
     attach_function :poppler_document_new_from_file, [:string, :string, :pointer], :pointer
