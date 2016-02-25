@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 echo "[Download]"
-wget https://poppler.freedesktop.org/poppler-0.41.0.tar.xz
+wget https://launchpad.net/ubuntu/+archive/primary/+files/poppler_0.38.0.orig.tar.xz
 
 echo "[Unarchive]"
-tar xf poppler-0.41.0.tar.xz
+tar xf poppler_0.38.0.orig.tar.xz
 
 echo "[Make & Install]"
-cd poppler-0.41.0
+cd poppler_0.38.0
 ./configure
 make
 sudo make install
