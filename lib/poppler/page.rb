@@ -22,6 +22,13 @@ module Poppler
       { width: width_ptr.read_double, height: height_ptr.read_double }
     end
 
+    def thumbnail_size
+      width_ptr = FFI::MemoryPointer.new :double
+      height_ptr = FFI::MemoryPointer.new :double
+      Binding.poppler_page_get_thumbnail_size(self.to_ptr, width_ptr, height_ptr)
+      { width: width_ptr.read_double, height: height_ptr.read_double }
+    end
+
     def crop_box
       crop_box = Rectangle.new
       Binding.poppler_page_get_crop_box(self.to_ptr, crop_box)

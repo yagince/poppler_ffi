@@ -20,6 +20,11 @@ RSpec.describe Poppler::Page do
     it { is_expected.to eq({ width: 595.0, height: 842.0 }) }
   end
 
+  describe "thumbnail_size" do
+    subject { page.thumbnail_size }
+    it { is_expected.to eq({ width: 0.0, height: 0.0 }) }
+  end
+
   describe "#crop_box" do
     subject { page.crop_box }
 
