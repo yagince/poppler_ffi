@@ -12,13 +12,7 @@ notifications:
   email: false
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y pkg-config fontconfig ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then $(${TRAVIS_BUILD_DIR}/build_poppler.sh)  ; fi
-  # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo add-apt-repository -y 'deb http://archive.ubuntu.com/ubuntu trusty main'  ; fi
-  # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0x3B4FE6ACC0B21F32  ; fi
-  # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -qq  ; fi
-  # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y libpoppler-glib-dev  ; fi
-
   - if [[ "$TRAVIS_OS_NAME" == "osx"   ]]; then brew update         ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx"   ]]; then brew install poppler; fi
   - gem install bundler -v 1.11.2
