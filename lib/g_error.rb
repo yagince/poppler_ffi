@@ -1,3 +1,5 @@
+require "ffi"
+
 class GError < FFI::Struct
   layout :domain, :uint32,
          :code, :int,

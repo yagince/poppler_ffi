@@ -1,6 +1,5 @@
 require 'ffi'
-require "glib2"
-require 'open3'
+require 'uri'
 
 require 'poppler_ffi/binding'
 require 'poppler_ffi/permissions'
@@ -91,13 +90,8 @@ module PopplerFFI
         uri = @pdf.path
       end
 
-      if GLib.path_is_absolute?(uri)
-        GLib.filename_to_uri(uri)
-      elsif /\A[a-zA-Z][a-zA-Z\d\-+.]*:/.match(uri)
-        uri
-      else
-        GLib.filename_to_uri(File.expand_path(uri))
-      end
+      return uri if /\A[a-zA-Z][a-zA-Z\d\-+.]*:/.match(uri)
+      URI.join('file:///', File.expand_path(uri)).to_s
     end
   end
 end
