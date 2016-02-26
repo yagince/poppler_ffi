@@ -3,8 +3,6 @@ require "glib2"
 require 'open3'
 
 require 'poppler_ffi/binding'
-require 'poppler_ffi/page_layout'
-require 'poppler_ffi/page_mode'
 require 'poppler_ffi/permissions'
 require 'poppler_ffi/page'
 
@@ -57,7 +55,7 @@ module PopplerFFI
     end
 
     def page_layout
-      PageLayout.new(Binding.poppler_document_get_page_layout(self.to_ptr))
+      Binding.poppler_document_get_page_layout(self.to_ptr)
     end
 
     def page_count
@@ -71,7 +69,7 @@ module PopplerFFI
     end
 
     def page_mode
-      PopplerFFI::PageMode.new(Binding.poppler_document_get_page_mode(self.to_ptr))
+      Binding.poppler_document_get_page_mode(self.to_ptr)
     end
 
     def permissions

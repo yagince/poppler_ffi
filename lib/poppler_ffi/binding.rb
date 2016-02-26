@@ -1,6 +1,9 @@
+require 'poppler_ffi/enum'
+
 module PopplerFFI
   module Binding
     extend FFI::Library
+    extend PopplerFFI::Enum
 
     ffi_lib PopplerFFI::Util.find_library
 
@@ -13,10 +16,10 @@ module PopplerFFI
     attach_function :poppler_document_get_keywords, [:pointer], :string
     attach_function :poppler_document_get_creation_date, [:pointer], :int
     attach_function :poppler_document_get_modification_date, [:pointer], :int
-    attach_function :poppler_document_get_page_layout, [:pointer], :int
+    attach_function :poppler_document_get_page_layout, [:pointer], PopplerFFI::Enum::PageLayout
     attach_function :poppler_document_get_n_pages, [:pointer], :int
     attach_function :poppler_document_get_page, [:pointer, :int], :pointer
-    attach_function :poppler_document_get_page_mode, [:pointer], :int
+    attach_function :poppler_document_get_page_mode, [:pointer], PopplerFFI::Enum::PageMode
     attach_function :poppler_document_get_permissions, [:pointer], :int
 
     # Page

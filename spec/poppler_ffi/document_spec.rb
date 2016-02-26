@@ -55,7 +55,7 @@ RSpec.describe PopplerFFI::Document do
 
   describe "#page_layout" do
     subject { doc.page_layout }
-    it { is_expected.to be_a PopplerFFI::PageLayout }
+    it { is_expected.to eq :unset }
   end
 
   describe "#page_count" do
@@ -70,7 +70,7 @@ RSpec.describe PopplerFFI::Document do
 
   describe "#page_mode" do
     subject { doc.page_mode }
-    it { is_expected.to be_a PopplerFFI::PageMode }
+    it { is_expected.to eq :unset }
   end
 
   describe "#permissions" do
