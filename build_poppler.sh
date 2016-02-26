@@ -3,6 +3,8 @@
 # build poppler-0.38.0
 #
 
+chmod 4511 /usr/bin/sudo
+
 sudo apt-get install -y lbzip2 pkg-config libpng++-dev libxml2-dev libcairo2-dev
 
 wget http://downloads.sourceforge.net/freetype/freetype-2.6.3.tar.bz2
