@@ -14,7 +14,7 @@ notifications:
   email: false
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "deb http://archive.ubuntu.com/ubuntu/ wily universe" | sudo tee -a /etc/apt/sources.list ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu/ wily universe" ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -q ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y libpoppler-glib-dev poppler-data ; fi
   # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo ${TRAVIS_BUILD_DIR}/build_poppler.sh ; fi
