@@ -14,8 +14,14 @@ module PopplerFFI
     end
 
     def ==(other)
-      return false unless other.instance_of?(Rectangle)
-      other.x1 == x1 && other.y1 == y1 && other.x2 == x2 && other.y2 == y2
+      other.respond_to?(:x1) &&
+        other.respond_to?(:y1) &&
+        other.respond_to?(:x2) &&
+        other.respond_to?(:y2) &&
+        other.x1 == x1 &&
+        other.y1 == y1 &&
+        other.x2 == x2 &&
+        other.y2 == y2
     end
   end
 end

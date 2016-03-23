@@ -77,4 +77,13 @@ RSpec.describe PopplerFFI::Document do
     subject { doc.permissions }
     it { is_expected.to be_a PopplerFFI::Permissions }
   end
+
+  context 'to many open files' do
+    let(:num) { 1000 }
+    it {
+      num.times { |i|
+        PopplerFFI::Document.new(file_path)
+      }
+    }
+  end
 end

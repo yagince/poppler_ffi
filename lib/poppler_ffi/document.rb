@@ -17,8 +17,10 @@ module PopplerFFI
 
     def initialize(file, password=nil)
       error = GError.new
-      file = ensure_uri(file)
-      @ptr = Binding.poppler_document_new_from_file(file, password, error.to_ptr)
+      binary = IO.binread(file)
+      buf = FFI::MemoryPointer.new(:char, binary.bytesize)
+      buf.put_bytes(0, binary)
+      @ptr = Binding.poppler_document_new_from_data(buf, binary.size, password, error.to_ptr)
       raise error[:message] if !error.null? && !error[:message].nil? && !error[:message].empty?
       super(@ptr)
     end

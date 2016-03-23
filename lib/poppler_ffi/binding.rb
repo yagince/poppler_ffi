@@ -9,6 +9,7 @@ module PopplerFFI
 
     # Document
     attach_function :poppler_document_new_from_file, [:string, :string, :pointer], :pointer
+    attach_function :poppler_document_new_from_data, [:pointer, :int, :string, :pointer], :pointer
     attach_function :poppler_document_get_pdf_version_string, [:pointer], :string
     attach_function :poppler_document_get_title, [:pointer], :string
     attach_function :poppler_document_get_author, [:pointer], :string
@@ -32,5 +33,6 @@ module PopplerFFI
     attach_function :poppler_page_get_text, [:pointer], :string
     attach_function :poppler_page_get_text_for_area, [:pointer, :pointer], :string
     attach_function :poppler_page_get_text_layout, [:pointer, :pointer, :pointer], :bool
+    attach_function :poppler_rectangle_free, [:pointer], :void
   end
 end

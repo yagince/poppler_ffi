@@ -56,6 +56,8 @@ module PopplerFFI
 
       n = count_ptr.read_uint
       array = array_ptr.read_pointer
+      array_ptr.free
+      count_ptr.free
       n.times.map{|i| Rectangle.new(array[i * Rectangle.size]) }
     end
   end
