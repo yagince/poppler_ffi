@@ -41,9 +41,9 @@ module PopplerFFI
 
     def text(area_rectangle = nil)
       if area_rectangle
-        Binding.poppler_page_get_text_for_area(self.to_ptr, area_rectangle)
+        Binding.poppler_page_get_text_for_area(self.to_ptr, area_rectangle).force_encoding('UTF-8')
       else
-        @text ||= Binding.poppler_page_get_text(self.to_ptr)
+        @text ||= Binding.poppler_page_get_text(self.to_ptr).force_encoding('UTF-8')
       end
     end
 
