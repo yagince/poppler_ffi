@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'parallel'
 
 RSpec.describe PopplerFFI::Document do
   let(:file_path) { "spec/fixture/sample.pdf" }
@@ -79,11 +80,24 @@ RSpec.describe PopplerFFI::Document do
   end
 
   context 'to many open files' do
-    let(:num) { 1000 }
-    it {
-      num.times { |i|
-        PopplerFFI::Document.new(file_path)
+    context 'squential' do
+      let(:num) { 1000 }
+      it {
+        num.times {
+          PopplerFFI::Document.new(file_path).pages.map(&:text)
+          PopplerFFI::Document.new(file_path).pages.map(&:text_layout)
+        }
       }
-    }
+    end
+
+    context 'parallel' do
+      let(:file_path) { "spec/fixture/heavy_sample.pdf" }
+      it {
+        Parallel.each(0..100) { |i|
+          PopplerFFI::Document.new(file_path).pages.map(&:text)
+          PopplerFFI::Document.new(file_path).pages.map(&:text_layout)
+        }
+      }
+    end
   end
 end
