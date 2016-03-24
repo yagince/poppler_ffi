@@ -93,6 +93,7 @@ RSpec.describe PopplerFFI::Document do
     context 'parallel' do
       let(:file_path) { "spec/fixture/heavy_sample.pdf" }
       it {
+        skip('segmentation fault on ubuntu')
         Parallel.each(0..100) { |i|
           PopplerFFI::Document.new(file_path).pages.map(&:text)
           PopplerFFI::Document.new(file_path).pages.map(&:text_layout)
