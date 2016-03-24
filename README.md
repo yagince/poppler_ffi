@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/yagince/poppler.svg?branch=master)](https://travis-ci.org/yagince/poppler)
+[![Build Status](https://travis-ci.org/yagince/poppler_ffi.svg?branch=master)](https://travis-ci.org/yagince/poppler_ffi)
 
 # Poppler
 
