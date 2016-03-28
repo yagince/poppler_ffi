@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 MAINTAINER yagince <straitwalk@gmail.com>
 
 RUN apt-get update
-RUN apt-get install -y libpoppler-glib-dev poppler-data curl git
+RUN apt-get install -y libpoppler-glib-dev poppler-data libgirepository1.0 curl git
 
 RUN echo "deb http://it.archive.ubuntu.com/ubuntu/ wily main universe restricted multiverse" >> /etc/apt/sources.list.d/wily.list
 RUN apt-get update
