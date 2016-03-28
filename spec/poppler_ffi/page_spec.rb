@@ -97,4 +97,19 @@ RSpec.describe PopplerFFI::Page do
                          rectangle(183,     103.576, 189.39600000000002, 118.228)]
     }
   end
+
+  describe 'render' do
+    let(:path) { 'test.pdf' }
+    after { File.delete(path) if File.exist? path }
+
+    it {
+      Cairo::PDFSurface.create(path, 500, 400) {|s|
+        c = Cairo::Context.create(s)
+        c.rectangle(10, 10, 100, 100)
+        c.stroke
+        c.show_page
+      }
+      expect(File.exist?(path)).to be_truthy
+    }
+  end
 end

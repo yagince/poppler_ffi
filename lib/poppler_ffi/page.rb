@@ -60,5 +60,9 @@ module PopplerFFI
       count_ptr.free
       n.times.map{|i| Rectangle.new(array[i * Rectangle.size]) }
     end
+
+    def render(cairo_context)
+      Binding.poppler_page_render(self.to_ptr, cairo_context.to_ptr)
+    end
   end
 end

@@ -33,6 +33,9 @@ module PopplerFFI
     attach_function :poppler_page_get_text, [:pointer], :string
     attach_function :poppler_page_get_text_for_area, [:pointer, :pointer], :string
     attach_function :poppler_page_get_text_layout, [:pointer, :pointer, :pointer], :bool
+    attach_function :poppler_page_render, [:pointer, :pointer], :void
+
+    # Rectangle
     attach_function :poppler_rectangle_free, [:pointer], :void
   end
 end
