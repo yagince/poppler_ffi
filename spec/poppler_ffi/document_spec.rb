@@ -81,7 +81,7 @@ RSpec.describe PopplerFFI::Document do
 
   context 'to many open files' do
     context 'squential' do
-      let(:num) { 1000 }
+      let(:num) { 100 }
       it {
         num.times {
           PopplerFFI::Document.new(file_path).pages.map(&:text)
@@ -93,7 +93,6 @@ RSpec.describe PopplerFFI::Document do
     context 'parallel' do
       let(:file_path) { "spec/fixture/heavy_sample.pdf" }
       it {
-        skip('segmentation fault on ubuntu')
         Parallel.each(0..100) { |i|
           PopplerFFI::Document.new(file_path).pages.map(&:text)
           PopplerFFI::Document.new(file_path).pages.map(&:text_layout)

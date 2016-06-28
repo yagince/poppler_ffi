@@ -6,12 +6,7 @@ RSpec.describe PopplerFFI::Rectangle do
   let(:x2) { 300 }
   let(:y2) { 400 }
   let(:rectangle) {
-    PopplerFFI::Rectangle.new.tap {|r|
-      r[:x1] = x1
-      r[:y1] = y1
-      r[:x2] = x2
-      r[:y2] = y2
-    }
+    PopplerFFI::Rectangle.new(x1, y1, x2, y2)
   }
 
   describe "properties" do
@@ -23,12 +18,12 @@ RSpec.describe PopplerFFI::Rectangle do
 
   describe "#==" do
     it {
-      expect(rectangle).to eq PopplerFFI::Rectangle.new.tap{|r|
-        r[:x1] = 100
-        r[:y1] = 200
-        r[:x2] = 300
-        r[:y2] = 400
-      }
+      expect(rectangle).to eq PopplerFFI::Rectangle.new(x1, y1, x2, y2)
     }
+  end
+
+  describe "#to_ffi" do
+    subject { rectangle.to_ffi }
+    it { is_expected.to be_a PopplerFFI::RectangleFFI }
   end
 end

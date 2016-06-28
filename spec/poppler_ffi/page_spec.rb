@@ -51,12 +51,7 @@ RSpec.describe PopplerFFI::Page do
 
     context "with rectangle" do
       let(:area) {
-        PopplerFFI::Rectangle.new.tap{|r|
-          r[:x1] = 100
-          r[:y1] = 300
-          r[:x2] = 500
-          r[:y2] = 600
-        }
+        PopplerFFI::Rectangle.new(100, 300, 500, 600)
       }
 
       subject { page.text(area) }
@@ -66,12 +61,7 @@ RSpec.describe PopplerFFI::Page do
   end
 
   def rectangle(x1, y1, x2, y2)
-    PopplerFFI::Rectangle.new.tap{|r|
-      r[:x1] = x1
-      r[:y1] = y1
-      r[:x2] = x2
-      r[:y2] = y2
-    }
+    PopplerFFI::Rectangle.new(x1, y1, x2, y2)
   end
 
   describe "text_layout" do

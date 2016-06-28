@@ -2,6 +2,7 @@ require 'ffi'
 require 'poppler_ffi/binding'
 require 'poppler_ffi/rectangle'
 require 'poppler_ffi/libc'
+require 'poppler_ffi/glib'
 
 module PopplerFFI
   class Page < FFI::Struct
@@ -30,9 +31,11 @@ module PopplerFFI
     end
 
     def crop_box
-      crop_box = Rectangle.new
+      crop_box = RectangleFFI.new
       Binding.poppler_page_get_crop_box(self.to_ptr, crop_box)
-      crop_box
+      r = crop_box.to_rectangle!
+      GLib.g_free(crop_box)
+      r
     end
 
     def duration
@@ -41,14 +44,14 @@ module PopplerFFI
 
     def text(area_rectangle = nil)
       if area_rectangle
-        Binding.poppler_page_get_text_for_area(self.to_ptr, area_rectangle).force_encoding('UTF-8')
+        Binding.poppler_page_get_text_for_area(self.to_ptr, area_rectangle.to_ffi).force_encoding('UTF-8')
       else
         @text ||= Binding.poppler_page_get_text(self.to_ptr).force_encoding('UTF-8')
       end
     end
 
     def text_layout
-      array_ptr = FFI::MemoryPointer.new Rectangle
+      array_ptr = FFI::MemoryPointer.new RectangleFFI
       count_ptr = FFI::MemoryPointer.new :int
       unless Binding.poppler_page_get_text_layout(self.to_ptr, array_ptr, count_ptr)
         return []
@@ -58,7 +61,9 @@ module PopplerFFI
       array = array_ptr.read_pointer
       array_ptr.free
       count_ptr.free
-      n.times.map{|i| Rectangle.new(array[i * Rectangle.size]) }
+      n.times.map { |i|
+        RectangleFFI.new(array[i * RectangleFFI.size]).to_rectangle!
+      }
     end
 
     def render(cairo_context)
