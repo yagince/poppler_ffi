@@ -13,7 +13,7 @@ Ruby bindings for Poppler
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'poppler-ruby'
+gem 'poppler_ffi'
 ```
 
 And then execute:
@@ -22,7 +22,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install poppler-ruby
+    $ gem install poppler_ffi
 
 ## Usage
 
