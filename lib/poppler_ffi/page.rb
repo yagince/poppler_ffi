@@ -59,11 +59,11 @@ module PopplerFFI
 
       n = count_ptr.read_uint
       array = array_ptr.read_pointer
-      array_ptr.free
-      count_ptr.free
-      n.times.map { |i|
+      rectangles = n.times.map { |i|
         RectangleFFI.new(array[i * RectangleFFI.size]).to_rectangle!
       }
+      GLib.g_free(array)
+      rectangles
     end
 
     def render(cairo_context)
